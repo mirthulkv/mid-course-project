@@ -171,3 +171,7 @@ This project demonstrates how a home automation system can:
 
 Project link(Wokwi): https://wokwi.com/projects/434546104861605889
 
+## Project Demo
+
+https://drive.google.com/file/d/161kzkcA-wFU74ar1Yv_FGzWWPMLfD0Wq/view?usp=drive_link
+
