@@ -1,5 +1,5 @@
 # mid-course-project
-# 🔌 Smart Home Automation System – ESP32 IoT Project
+# Smart Home Automation System – ESP32 IoT Project
 
 ##  Aim
 To simulate a smart home automation system that:
@@ -69,7 +69,7 @@ This project demonstrates how a home automation system can:
      ↓           ↓
     No          Yes
      ↓            ↓
-               Idle    Read LDR Sensor
+    Idle    Read LDR Sensor
                    ↓
                Is Light Low?
                  ↓      ↓
