@@ -164,3 +164,10 @@ This project demonstrates how a home automation system can:
 
     delay(10000);
     }
+
+## Simulated circuit
+
+![image](https://github.com/user-attachments/assets/48ee3baf-4f07-4e19-8344-ef2298ae3c81)
+
+Project link(Wokwi): https://wokwi.com/projects/434546104861605889
+
