@@ -78,3 +78,89 @@ This project demonstrates how a home automation system can:
     Lights OFF   → Turn ON Lights
                  → Send Alert to Cloud
 
+## Code
+
+     #include <WiFi.h>
+     #include "DHTesp.h"
+     #include "ThingSpeak.h"
+
+    #define ldrPin 2
+
+     const int PIR_PIN = 14;
+     const int DHT_PIN = 15;
+     const int LDR_PIN = A0;  // Define the LDR pin
+     const int LED_PIN = 12;
+     const float gama = 0.7; 
+     const float rl10 = 50;
+
+     int pirState = LOW;
+     int val = 0;
+     int ldrValue = 0;  // Variable to store LDR value
+
+     const char* WIFI_NAME = "Wokwi-GUEST";
+     const char* WIFI_PASSWORD = "";
+     const int myChannelNumber = 2996048;
+     const char* myApiKey = "VFZ3WMLX146INWU0";
+     const char* server = "api.thingspeak.com";
+
+    DHTesp dhtSensor;
+    WiFiClient client;
+
+     void setup() {
+      Serial.begin(115200);
+      pinMode(PIR_PIN, INPUT);
+      pinMode(LDR_PIN, INPUT);  // Set the LDR pin as an input
+      dhtSensor.setup(DHT_PIN, DHTesp::DHT22);
+      pinMode(LED_PIN, OUTPUT);
+      WiFi.begin(WIFI_NAME, WIFI_PASSWORD);
+      while (WiFi.status() != WL_CONNECTED){
+      delay(1000);
+      Serial.println("Wifi not connected");
+      }
+     Serial.println("Wifi connected !");
+     Serial.println("Local IP: " + String(WiFi.localIP()));
+     WiFi.mode(WIFI_STA);
+    ThingSpeak.begin(client);
+     }
+
+    void loop() {
+     TempAndHumidity  data = dhtSensor.getTempAndHumidity();
+     ThingSpeak.setField(1, data.temperature);
+     ThingSpeak.setField(2, data.humidity);
+
+    // Read PIR sensor
+     val = digitalRead(PIR_PIN);
+    if (val == HIGH) {
+    pirState = HIGH;
+    digitalWrite(LED_PIN, HIGH);  // Turn on LED when motion is detected
+         }  else {
+    pirState = LOW;
+    digitalWrite(LED_PIN, LOW);   // Turn off LED when no motion
+     }
+
+    // Read LDR sensor
+    ldrValue = analogRead(LDR_PIN);
+
+    // Send motion detection and LDR data
+    ThingSpeak.setField(3, pirState); // Use Field 3 for motion detection data
+    ThingSpeak.setField(4, ldrValue); // Use Field 4 for LDR data
+
+    int x = ThingSpeak.writeFields(myChannelNumber, myApiKey);
+  
+    Serial.println("Temp: " + String(data.temperature, 2) + "°C");
+    Serial.println("Humidity: " + String(data.humidity, 1) + "%");
+    Serial.println("LDR Value: " + String(ldrValue));
+
+    if (pirState == HIGH) {
+    Serial.println("Motion Detected!");
+    }
+  
+    if (x == 200){
+    Serial.println("Data pushed successfully");
+    } else {
+    Serial.println("Push error: " + String(x));
+    }
+    Serial.println("---");
+
+    delay(10000);
+    }
