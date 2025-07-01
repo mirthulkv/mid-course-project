@@ -174,17 +174,17 @@ Project link(Wokwi): https://wokwi.com/projects/434546104861605889
 ## Project Demo
 
 https://drive.google.com/file/d/161kzkcA-wFU74ar1Yv_FGzWWPMLfD0Wq/view?usp=drive_link
-]
+
 
 ## Procedure
 
-  1.Open the Wokwi Simulator
+1.Open the Wokwi Simulator
     Begin the simulation environment for ESP32-based IoT projects.
 
-  2.Add Required Components
+2.Add Required Components
      Add ESP32, PIR sensor, LDR, DHT22, and LED to the circuit.
 
-  3.Make Circuit Connections
+3.Make Circuit Connections
      Connect all components appropriately to the ESP32 pins.
 
 4. Write and Upload Code
@@ -203,7 +203,7 @@ https://drive.google.com/file/d/161kzkcA-wFU74ar1Yv_FGzWWPMLfD0Wq/view?usp=drive
     View real-time sensor data updates on the cloud dashboard.
 
 9.Document Results
-    Capture screenshots and observations for report or presentation use.
+    Capture screenshots and observations for data analysis.
 
 ## Result
 The smart home automation system was successfully simulated using the Wokwi platform. The system continuously monitored motion using a PIR sensor and ambient light using an LDR. When motion was detected in a low-light condition, the LED (representing a smart light) automatically turned ON. Additionally, real-time sensor data including temperature, humidity, motion status, and light intensity was successfully sent to the ThingSpeak cloud platform and visualized through live graphs. The project met all objectives defined in the problem statement and demonstrated reliable performance in a simulated environment.
