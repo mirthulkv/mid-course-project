@@ -187,7 +187,7 @@ https://drive.google.com/file/d/161kzkcA-wFU74ar1Yv_FGzWWPMLfD0Wq/view?usp=drive
 3.Make Circuit Connections
      Connect all components appropriately to the ESP32 pins.
 
-4. Write and Upload Code
+4.Write and Upload Code
     Develop code to read sensor values, control the LED, and send data to the cloud.
 
 5.Configure ThingSpeak Settings
